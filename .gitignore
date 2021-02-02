@@ -12,3 +12,7 @@ pyenv/
 .coverage
 .pytest_cache/
 htmlcov/
+
+# Debian
+.eggs/
+.pybuild/

@@ -1,0 +1,21 @@
+Source: gmqtt
+Section: python
+Priority: optional
+Maintainer: Dan Trickey <dtrickey@studentrobotics.org>
+Build-Depends: debhelper-compat (= 10),
+               dh-python,
+               python3-all-dev (>= 3.6),
+               python3-setuptools,
+Standards-Version: 4.5.1
+X-Python3-Version: >= 3.6
+Homepage: https://github.com/wialon/gmqtt
+
+Package: python3-gmqtt
+Architecture: all
+Section: python
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends},
+Description: Python MQTT v5.0 async client
+ Pure Python MQTT v5.0 async client with no external dependencies.
+ Works with asyncio or uvloop event loops.

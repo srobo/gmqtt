@@ -1,0 +1,24 @@
+name: Upload to Debian repo
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: repo
+      - name: Install APT dependencies
+        run: sudo apt install build-essential devscripts debhelper equivs
+        working-directory: repo
+      - name: Build Debian package
+        run: sudo mk-build-deps -ir && debuild -uc -us
+        working-directory: repo
+      - uses: lpenz/ghaction-packagecloud@v0.1
+        with:
+          repository: srobo/kit/bullseye
+        env:
+          PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
